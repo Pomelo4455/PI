@@ -3,7 +3,7 @@ const { DataTypes, UUIDV4 } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('recipe', {
+  sequelize.define('diet', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -14,19 +14,6 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    summary: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    healthScore: {
-      type: DataTypes.INTEGER,
-    },
-    steps: {  // Step by step
-      type: DataTypes.STRING,
-    },
-    image: {
-      type: DataTypes.STRING,
     },
   },
     { timestamps: false } // "timestamps: false" just to avoid having the "createdAt" and "updatedAt" columns created
