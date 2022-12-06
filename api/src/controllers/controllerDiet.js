@@ -1,4 +1,4 @@
-const types = [
+const dietTypes = [
     "gluten free",
     "dairy free",
     "ketogenic",
@@ -15,5 +15,5 @@ const types = [
     ];
 
 module.exports = {
-    types,
+    dietTypes,
 }
