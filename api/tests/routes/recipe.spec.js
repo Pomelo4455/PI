@@ -32,7 +32,7 @@ describe('GET /recipes/:id', () => {
         expect(res.status).to.equal(200)
       })
   });
-  it('Deberia devolver el titulo de la receta buscada por ID', () => {
+  it('Espera el nombre de la receta buscada por ID', () => {
     return agent.get("/recipes/715594")
       .then(res => {
         expect(res.body.name).to.equal("Homemade Garlic and Basil French Fries")
