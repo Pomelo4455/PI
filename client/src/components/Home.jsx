@@ -8,19 +8,19 @@ import { useState, useEffect } from "react";
 import { connect } from "react-redux";  // function that connects the react component to the redux store
 import { fetchRecipes, filterByDietType, orderByLetter, orderByHealthScore} from "../redux/actions"
 import img1 from "./Styles/Star.png"
-import img2 from "./Styles/Star2.png"
+
 let prevId = 1;
 
-function Home(props) {
+function Home(props) {  // props being the object sent by the corresponding component
 
     const [/* order */, setOrder] = useState('')
 
-    // Lógica para mostrar 9 recetas por página
+    // 9 recipes per page
     const [page, setPage] = useState(1);
     const recipesPage = 9;
     const numberOfRecipes = page * recipesPage;
     const firstRecipe = numberOfRecipes - recipesPage;
-    const showRecipes = props.showedRecipes.slice(firstRecipe, numberOfRecipes);
+    const showRecipes = props.shownRecipes.slice(firstRecipe, numberOfRecipes);
 
     const paged = function (pageNumber) {
         setPage(pageNumber)
@@ -28,34 +28,33 @@ function Home(props) {
 
     useEffect(() => {
         props.fetchRecipes();
-        // La siguiente línea es para quitar un warning molesto de la consola.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.fetchRecipes]);
 
     let handleClick = (e) => {
-        e.preventDefault();
+        e.preventDefault();  // To stop it from refreshing on each click over something
         props.fetchRecipes();
         setPage(1);
         setOrder('')
-        window.location.reload();  // Si quiero recargar la página y limpiar todos los select, esta es una opción.
+        window.location.reload();  // To have the option to reload the page erasing all "select"
     }
 
-    let handlefilterByDietType = (e) => {
+    let handleFilterByDietType = (e) => {
         e.preventDefault();
         props.filterByDietType(e.target.value);
         setPage(1);
     }
 
-    let handleorderByLetter = (e) => {
+    let handleOrderByLetter = (e) => {
         e.preventDefault();
         props.orderByLetter(e.target.value);
         setPage(1);
         setOrder(e.target.value);
     }
 
-    let handleOrderByScore = (e) => {
+    let handleOrderByHealthScore = (e) => {
         e.preventDefault();
-        props.orderByScore(e.target.value);
+        props.orderByHealthScore(e.target.value);
         setPage(1);
         setOrder(e.target.value);
     }
@@ -65,25 +64,21 @@ function Home(props) {
             {/* SearchBar */}
             <SearchBar />
             <hr></hr>
-
             <div className={style.btnYfilt}>
-
-                {/* BOTON PARA REFRESCAR */}
+                {/* Refresh Button */}
                 <div>
-                    <button className={style.btn} onClick={handleClick}>REFRESH</button>
+                    <button className={style.btn} onClick={handleClick}>Refresh</button>
                 </div>
-
-                {/* BOTON PARA CREAR UNA RECETA  */}
+                {/* Recipe Creation Button */}
                 <div>
                     <Link to="/recipe">
-                        <button className={style.btn}>CREATE</button>
+                        <button className={style.btn}>Create</button>
                     </Link>
                 </div>
-
-                {/* FILTRADO POR TIPO DE DIETA */}
+                {/* Filter By Diet Type */}
                 <div className={style.box}>
-                    <select defaultValue={'all'} name="diets" onChange={e => handlefilterByDietType(e)}>
-                        <option value="all">Filter by type of diet</option>
+                    <select defaultValue={'all'} name="diets" onChange={e => handleFilterByDietType(e)}>
+                        <option value="all">Filter by diet type</option>
                         <option value="gluten free">Gluten Free</option>
                         <option value="ketogenic">Ketogenic</option>
                         <option value="vegetarian">Vegetarian</option>
@@ -99,44 +94,33 @@ function Home(props) {
                         <option value="dairy free">Dairy Free</option>
                     </select>
                 </div>
-
-                {/* ORDEN ALFABÉTICO  */}
+                {/* Order By Letter */}
                 <div className={style.box}>
-                    <select defaultValue={'DEFAULT'} name="alphabetical" onChange={e => handleorderByLetter(e)}>
+                    <select defaultValue={'DEFAULT'} name="alphabetical" onChange={e => handleOrderByLetter(e)}>
                         <option value="DEFAULT" disabled>Order alphabetically</option>
                         <option value="atoz">A to Z</option>
                         <option value="ztoa">Z to A</option>
                     </select>
                 </div>
-
-                {/* ORDEN DE MIN A MAX - MAX A MIN  */}
+                {/* Min to Max - Max to Min */}
                 <div className={style.box}>
-                    <select defaultValue={'DEFAULT'} name="numerical" onChange={e => handleOrderByScore(e)}>
-                        <option value="DEFAULT" disabled>Order by Score</option>
+                    <select defaultValue={'DEFAULT'} name="numerical" onChange={e => handleOrderByHealthScore(e)}>
+                        <option value="DEFAULT" disabled>Order by health score</option>
                         <option value="asc">Min to Max</option>
                         <option value="desc">Max to Min</option>
                     </select>
                 </div>
-
             </div>
-
             <hr></hr>
-
-            {/* REFERENCIAS PARA ENTENDER LAS ESTRELLAS */}
+            {/* Star */}
             <div className={style.ref}>
                 <div>
-                    <p className={style.starRef}>Score</p>
-                    <img className={style.star} src={img1} alt='Img NOT FOUND'></img>
-                </div>
-                <div>
-                    <p className={style.starRef}>Heath Score</p>
-                    <img className={style.star} src={img2} alt='Img NOT FOUND'></img>
+                    <h1 className={style.starRef}>Health Score</h1>
+                    <img className={style.star} src={img1} alt='Img not found'></img>
                 </div>
             </div>
-
             <br></br>
-
-            {props.showedRecipes.length === 0 ?
+            {props.shownRecipes.length === 0 ?
                 <div className={style.load}>
                     <h5>Loading...</h5>
                 </div> :
@@ -148,39 +132,26 @@ function Home(props) {
                                     <Recipe
                                         image={e.image}
                                         name={e.name}
-                                        score={e.score}
                                         healthScore={e.healthScore}
                                         diets={e.diets}
                                         id={e.id}
                                     ></Recipe>
-
                                 </div>
                             )
                         })
                     }
                 </div>
             }
-
-
             <hr></hr>
-
             <div className={style.pag}>
-
-                {
-                    props.showedRecipes.length > 9 ?
+                {  // Page turn-over simulator
+                    props.shownRecipes.length > 9 ?
                         <div className={style.pag}>
-                            <Paginated recipesPage={recipesPage} showedRecipes={props.showedRecipes.length} paged={paged} setPage={setPage} page={page}></Paginated>
-                            <span className={style.actual}> {page} of {Math.ceil(props.showedRecipes.length / recipesPage)} </span>
+                            <Paginated recipesPage={recipesPage} shownRecipes={props.shownRecipes.length} paged={paged} setPage={setPage} page={page}></Paginated>
+                            <span className={style.actual}> {page} of {Math.ceil(props.shownRecipes.length / recipesPage)} </span>
                         </div> :
-                        <div><span className={style.actual}> {page} of {Math.ceil(props.showedRecipes.length / recipesPage)} </span></div>
+                        <div><span className={style.actual}> {page} of {Math.ceil(props.shownRecipes.length / recipesPage)} </span></div>
                 }
-
-                {
-                    props.showedRecipes.length === 0 ?
-                        <h5 className={style.pub}>Matías Ramira</h5>
-                        : <h5 className={style.pub2}>Matías Ramira</h5>
-                }
-
             </div>
         </div>
     )
@@ -188,7 +159,7 @@ function Home(props) {
 
 function mapStateToProps(state) {
     return {
-        showedRecipes: state.showedRecipes,
+        shownRecipes: state.shownRecipes,
     }
 }
 
@@ -197,7 +168,7 @@ function mapDispatchToProps(dispatch) {
         fetchRecipes: () => dispatch(fetchRecipes()),
         filterByDietType: (payload) => dispatch(filterByDietType(payload)),
         orderByLetter: (payload) => dispatch(orderByLetter(payload)),
-        orderByScore: (payload) => dispatch(orderByScore(payload)),
+        orderByHealthScore: (payload) => dispatch(orderByHealthScore(payload)),
     }
 }
 
