@@ -16,46 +16,34 @@
 }
 
 .ib {
-    margin-left: 10%;
+    display: flex;
+    flex-direction: flex;
+    align-items: center;
+    position: absolute; right: 100px;
 }
 
 .input {
-    width: 1000px;
-    height: 50px;
+    width: 500px;
+    height: 40px;
     font-size: 200%;
-    color: grey;
+    color: #222222;
     border-radius: 20px;
-    text-indent: 5px;
-    outline: none;
 }
 
 .input::placeholder {
-    text-align: center;
-    color: grey;
+    text-align: start;
+    padding-left: 6px;
+    color: #222222;
     font-size: x-large;
-}
-/* .input {
-    width: 1000px;
-    height: 50px;
-    font-size: 200%;
-    background-color: rgb(81, 71, 58);
     border-radius: 20px;
-    text-indent: 5px;
-    outline: none;
 }
-
-.input::placeholder {
-    text-align: middle;
-    color: grey;
-    font-size: 100%;
-} */
 
 .btn {
     margin-left: 50px;
     height: 40px;
     width: 100px;
     border-radius: 10px;
-    background-color: rgb(81, 71, 58);
+    background-color: #222222;
     color: rgba(245, 245, 245, 0.836);
     font-weight: bold;
     font-size: 95%;
@@ -63,8 +51,8 @@
 
 .btn:hover {
     background-color: rgb(80, 80, 80);
-    color: white;
-    transition: 0.7s;
+    color: rgba(245, 245, 245, 0.836);
+    transition: 0.2s;
 }
 
 .img {
@@ -98,39 +86,42 @@
     }
 
     .ib {
-        margin-left: 70px;
+        display: flex;
+        flex-direction: flex;
+        align-items: center;
+        position: absolute; right: 50px;
     }
 
     .input {
-        width: 900px;
-        height: 50px;
-        font-size: 150%;
-        color:  bisque;
-        border-radius: 25px;
-        text-indent: 5px;
-        outline: none;
-        margin-top: 5px;
+        width: 400px;
+        height: 40px;
+        font-size: 200%;
+        color: #222222;
+        border-radius: 20px;
     }
 
     .input::placeholder {
-        text-align: center;
-        color: grey;
-        font-size: 25px;
+        text-align: start;
+        padding-left: 6px;
+        color: #222222;
+        font-size: x-large;
+        border-radius: 20px;
     }
 
     .btn {
-        margin-left: 20px;
-        height: 35px;
-        width: 85px;
-        border-radius: 10px;
-        background-color: rgb(255, 255, 255);
-        color: black;
+        margin-left: 25px;
+        height: 30px;
+        width: 75px;
+        border-radius: 8px;
+        background-color: #222222;
+        color: rgba(245, 245, 245, 0.836);
         font-weight: bold;
+        font-size: 60%;
     }
 
     .btn:hover {
         background-color: rgb(80, 80, 80);
-        color: white;
+        color: rgba(245, 245, 245, 0.836);
         transition: 0.2s;
     }
 }
@@ -158,39 +149,42 @@
     }
 
     .ib {
-        margin-left: 20px;
+        display: flex;
+        flex-direction: flex;
+        align-items: center;
+        position: absolute; right: 25   px;
     }
 
     .input {
-        width: 470px;
-        height: 40px;
-        font-size: 150%;
-        color: grey;
+        width: 250px;
+        height: 35px;
+        font-size: 200%;
+        color: #222222;
         border-radius: 20px;
-        text-indent: 5px;
-        outline: none;
-        margin-top: 5px;
     }
 
     .input::placeholder {
-        text-align: center;
-        color: grey;
-        font-size: 20px;
+        text-align: start;
+        padding-left: 6px;
+        color: #222222;
+        font-size: x-large;
+        border-radius: 20px;
     }
 
     .btn {
         margin-left: 20px;
         height: 30px;
-        width: 80px;
-        border-radius: 10px;
-        background-color: rgb(255, 255, 255);
-        color: black;
+        width: 60px;
+        border-radius: 8px;
+        background-color: #222222;
+        color: rgba(245, 245, 245, 0.836);
         font-weight: bold;
+        font-size: 50%;
     }
 
     .btn:hover {
         background-color: rgb(80, 80, 80);
-        color: white;
+        color: rgba(245, 245, 245, 0.836);
         transition: 0.2s;
     }
 }
@@ -222,19 +216,19 @@
     }
 
     .input {
-        width: 300px;
+        width: 200px;
         height: 30px;
-        font-size: 120%;
-        color: grey;
-        border-radius: 18px;
-        text-indent: 5px;
-        outline: none;
+        font-size: 200%;
+        color: #222222;
+        border-radius: 20px;
     }
 
     .input::placeholder {
-        text-align: center;
-        color: grey;
-        font-size: 18px;
+        text-align: start;
+        padding-left: 6px;
+        color: #222222;
+        font-size: x-large;
+        border-radius: 20px;
     }
 
     .btn {
@@ -242,14 +236,14 @@
         height: 25px;
         width: 75px;
         border-radius: 10px;
-        background-color: rgb(255, 255, 255);
-        color: black;
+        background-color: #222222;
+        color: rgba(245, 245, 245, 0.836);
         font-weight: bold;
     }
 
     .btn:hover {
         background-color: rgb(80, 80, 80);
-        color: white;
+        color: rgba(245, 245, 245, 0.836);
         transition: 0.2s;
     }
 }
@@ -282,19 +276,19 @@
     }
 
     .input {
-        width: 200px;
+        width: 150px;
         height: 25px;
-        font-size: 120%;
-        color: grey;
-        border-radius: 18px;
-        text-indent: 5px;
-        outline: none;
+        font-size: 200%;
+        color: #222222;
+        border-radius: 20px;
     }
 
     .input::placeholder {
-        text-align: center;
-        color: grey;
-        font-size: 12px;
+        text-align: start;
+        padding-left: 6px;
+        color: #222222;
+        font-size: x-large;
+        border-radius: 20px;
     }
 
     .btn {
@@ -310,7 +304,7 @@
 
     .btn:hover {
         background-color: rgb(80, 80, 80);
-        color: white;
+        color: rgba(245, 245, 245, 0.836);
         transition: 0.2s;
     }
 }
@@ -342,19 +336,19 @@
     }
 
     .input {
-        width: 200px;
-        height: 25px;
-        font-size: 120%;
-        color: grey;
-        border-radius: 18px;
-        text-indent: 5px;
-        outline: none;
+        width: 150px;
+        height: 20px;
+        font-size: 200%;
+        color: #222222;
+        border-radius: 20px;
     }
 
     .input::placeholder {
-        text-align: center;
-        color: grey;
-        font-size: 12px;
+        text-align: start;
+        padding-left: 6px;
+        color: #222222;
+        font-size: x-large;
+        border-radius: 20px;
     }
 
     .btn {
@@ -362,15 +356,15 @@
         height: 20px;
         width: 50px;
         border-radius: 10px;
-        background-color: rgb(255, 255, 255);
-        color: black;
+        background-color: #222222;
+        color: rgba(245, 245, 245, 0.836);
         font-size: 8px;
         font-weight: bold;
     }
 
     .btn:hover {
         background-color: rgb(80, 80, 80);
-        color: white;
+        color: rgba(245, 245, 245, 0.836);
         transition: 0.2s;
     }
 }

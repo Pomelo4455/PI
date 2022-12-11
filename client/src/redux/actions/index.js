@@ -16,11 +16,11 @@ export function fetchRecipes() {
 export function fetchRecipeByName(name) {
     return async function(dispatch) {
         try {
-            const response = await axios.get(`/recipes/?name=${name}`)
+            const response = await axios.get(`/recipes/?keyword=${name}`)
             return dispatch({
                 type: "FETCH_RECIPE_BY_NAME",
                 payload: response.data
-            })
+            });
         } catch (err) {
             alert("The recipe was not found")
         }

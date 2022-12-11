@@ -12,7 +12,7 @@ export default function SearchBar() {
     let handleChange = (e) => {
         e.preventDefault();
         setInput(e.target.value);
-        // dispatch(fetchRecipeByName(input));
+        // dispatch(fetchRecipeByName(input));  // To avoid reaching the API requests limit
     }
 
     let handleSubmit = (e) => {
